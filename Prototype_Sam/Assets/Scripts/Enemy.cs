@@ -19,11 +19,8 @@ public class Enemy : MonoBehaviour
     {
         distance = Vector2.Distance(transform.position, playersprite.transform.position); //gets the distance from player to enemy
         Vector2 direction = playersprite.transform.position - transform.position;
-
-       
-        if (distance < 2)
-        {
-            transform.position = Vector2.MoveTowards(this.transform.position, playersprite.transform.position, speed * Time.deltaTime);
-        }
+        
+        
+        transform.position = Vector2.MoveTowards(this.transform.position, playersprite.transform.position, speed * Time.deltaTime);
     }
 }
