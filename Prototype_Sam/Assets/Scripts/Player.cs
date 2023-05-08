@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     public float speed;
     
     public Rigidbody2D rb;
+    private Vector2 moveVelocity;
 
     // Start is called before the first frame update
     void Start()
@@ -43,18 +44,15 @@ public class Player : MonoBehaviour
         transform.position = pos;
         // Moving the cube with WASD
 
+        moveVelocity = rb.velocity;
+
     }
 
-
-
-    public void TakeDamage(int damage)
+    private void FixedUpdate()
     {
-        health -= damage;
-        if(health <= 0)
-        {
-            Destroy(gameObject);
-        }
+        rb.MovePosition(rb.position + moveVelocity * Time.fixedDeltaTime);
     }
+
 
 
     private void OnCollisionEnter2D(Collision2D other)
